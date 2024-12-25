@@ -1,0 +1,66 @@
+[user@archlinux ~]$ mongo
+bash: mongo: command not found
+[user@archlinux ~]$ mongosh
+Current Mongosh Log ID:	67641d1c289c161c77fe6910
+Connecting to:		mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.2
+Using MongoDB:		8.0.1
+Using Mongosh:		2.3.2
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+
+To help improve our products, anonymous usage data is collected and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
+You can opt-out by running the disableTelemetry() command.
+
+------
+   The server generated these startup warnings when booting
+   2024-12-19T12:59:43.724+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2024-12-19T13:00:00.313+00:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+   2024-12-19T13:00:00.316+00:00: For customers running the current memory allocator, we suggest changing the contents of the following sysfsFile
+   2024-12-19T13:00:00.316+00:00: We suggest setting the contents of sysfsFile to 0.
+   2024-12-19T13:00:00.317+00:00: We suggest setting swappiness to 0 or 1, as swapping can cause performance problems.
+------
+
+test> show dbs
+admin   40.00 KiB
+config  72.00 KiB
+local   72.00 KiB
+test> use perpustakaan 
+switched to db perpustakaan
+perpustakaan> db.librarians.insert({"nama":"dias","id pustakawan":"11230251000010"})
+DeprecationWarning: Collection.insert() is deprecated. Use insertOne, insertMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('676424ad289c161c77fe6911') }
+}
+perpustakaan> db.categories.insert({"judul buku":"the hijab girls","subjek":"fiksi"})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('676427aa289c161c77fe6912') }
+}
+perpustakaan> db.shelves.insert({"judul buku":"the hijab girls","pengarang":"najmah alya irawan","ISBN":"978-602-242-903-6"})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('676429f2289c161c77fe6913') }
+}
+perpustakaan> db.publisher.insert({"judul buku":"the hijab girls","penerbit":"DAR!Mizan"})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('67642a98289c161c77fe6914') }
+}
+perpustakaan> db.transactions.insert({"nama":"Erland","id anggota":"202412200439","stastus anggota":"aktif","biaya peminjaman":"5.000 untuk satu buku","biaya denda":"25.000 untuk satu buku"})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('67642c85289c161c77fe6915') }
+}
+perpustakaan> db.activities.insert({"tanggal":"15 Agustus 2024","total pemustaka":"170 orang","total peminjaman koleksi":"50 orang","total pengembalian koleksi":"35 orang"})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('67642db1289c161c77fe6916') }
+}
+perpustakaan> show dbs
+admin          40.00 KiB
+config        108.00 KiB
+local          72.00 KiB
+perpustakaan  240.00 KiB
+perpustakaan> 
